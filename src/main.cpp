@@ -82,7 +82,8 @@ void connect(){
 
 int main(){
 
-    CalendarManager cm{"./../config/config.cfg"};
+    CalendarManager cm = CalendarManager("./config/config.json");
+    //CalendarManager cm = CalendarManager("./../config/config.json");
 
     return 0;
 }
