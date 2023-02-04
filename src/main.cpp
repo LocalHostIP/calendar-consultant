@@ -4,16 +4,16 @@
 #include "../include/chilkat/CkOAuth2.h"
 #include "../include/chilkat/CkStringBuilder.h"
 #include "../include/chilkat/CkJsonObject.h"
+#include "headers/CalendarManager.h"
 
-std::map <std::string,std::string> config;
 
 std::string refreshToken(CkRest &rest){
     /*Get refresh token*/
     CkStringBuilder sbJson;
-    rest.AddQueryParam("grant_type","refresh_token");
-    rest.AddQueryParam("refresh_token",REFRESH_TOKEN);
-    rest.AddQueryParam("client_secret",CLIENT_SECRET);
-    rest.AddQueryParam("client_id",CLIENT_ID);
+    //rest.AddQueryParam("grant_type","refresh_token");
+    //rest.AddQueryParam("refresh_token",REFRESH_TOKEN);
+    //rest.AddQueryParam("client_secret",CLIENT_SECRET);
+    //rest.AddQueryParam("client_id",CLIENT_ID);
 
     bool success = rest.FullRequestNoBodySb("POST","/oauth2/v4/token",sbJson);
     
@@ -81,6 +81,8 @@ void connect(){
 }
 
 int main(){
+
+    CalendarManager cm{"./../config/config.cfg"};
 
     return 0;
 }

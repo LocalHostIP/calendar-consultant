@@ -1,0 +1,12 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/local/Documents/Code/Cpp/calendar-consultant/bin",
+            "binaryPath": "/home/local/Documents/Code/Cpp/calendar-consultant/bin/main",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "fstream": "cpp"
+    }
+}

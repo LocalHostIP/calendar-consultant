@@ -1,9 +1,12 @@
 CC=g++
 CFLAGS=-g -Wall
 
+OBJ=obj
+SRC=src
+
 BIN=bin/main
-OBJ=obj/main.o
-SRC=src/main.cpp
+OBJs=$(OBJ)/main.o $(OBJ)/CalendarManager.o 
+SRCs=$(SRC)/main.cpp $(SRC)/CalendarManager.cpp 
 
 all:bin/main
 
@@ -11,10 +14,10 @@ release: CFLAGS=-Wall -O2 -DNDEBUG
 release: clean
 release: $(BIN)
 
-$(BIN): $(OBJ)
-	$(CC) $(CFLAGS) obj/main.o -o $@ -L lib -lchilkat
+$(BIN): $(OBJs)
+	$(CC) $(CFLAGS) $(OBJs) -o $@ -L lib -lchilkat
 
-$(OBJ): $(SRC)
+$(OBJ)/%.o: $(SRC)/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 clean:
