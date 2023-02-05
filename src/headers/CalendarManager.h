@@ -4,6 +4,11 @@
 #include <map>
 #include <iostream>
 #include <fstream>
+#include <string.h>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
+
 #include "../../include/chilkat/CkRest.h"
 #include "../../include/chilkat/CkOAuth2.h"
 #include "../../include/chilkat/CkStringBuilder.h"
@@ -14,13 +19,14 @@ class CalendarManager{
     CkOAuth2 oauth2;
     CkJsonObject jsConfig;
     std::string config_path;
+    std::string user_calendar;
 
     bool loadConfig();
 
     bool refreshToken();
 
 public:
-    void getCalendars();
+    void getUpcommingEvents(int maxEvents);
     CalendarManager(const std::string &config_path);
 };
 
