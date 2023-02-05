@@ -19,8 +19,7 @@ CalendarManager::CalendarManager(const std::string &config_path){
         exit(-1);
     }
 
-    //Get Calendars
-    getUpcommingEvents(2);
+
 }
 
 bool CalendarManager::loadConfig(){
@@ -64,9 +63,10 @@ bool CalendarManager::refreshToken(){
     return success;
 }
 
-void CalendarManager::getUpcommingEvents(int maxEvents){   
+std::vector<CalendarEvent> CalendarManager::getUpcommingEvents(int maxEvents){   
     //Cleaning rest
     rest.ClearAllQueryParams();
+    std::vector<CalendarEvent> events;
     //Setting rest
     std::cout << "Asking for Calendars.. \n";
     CkStringBuilder sbJson;
@@ -100,7 +100,7 @@ void CalendarManager::getUpcommingEvents(int maxEvents){
         }
 
         getUpcommingEvents(maxEvents);
-        return;
+        return events;
     }
 
     else if (rest.get_ResponseStatusCode() != 200) {
@@ -113,9 +113,10 @@ void CalendarManager::getUpcommingEvents(int maxEvents){
     //Get json params
     CkJsonObject json;
     json.LoadSb(sbJson);
-
+    std::cout << "Printing events.. \n";
+    
     //Parses the json response
-    int i;
+    int i = 0;
     int count_i;
     const char* id;
     const char* startDateTime;
@@ -123,9 +124,8 @@ void CalendarManager::getUpcommingEvents(int maxEvents){
     const char* summary;
     const char* created;
     count_i = json.SizeOfArray("items");
-    std::cout << "Printing events.. \n";
+    
     while (i<count_i){
-        std::cout << "------------------\n";
         json.put_I(i);
         id = json.stringOf("items[i].id");
         summary = json.stringOf("items[i].summary");
@@ -133,17 +133,20 @@ void CalendarManager::getUpcommingEvents(int maxEvents){
         endDateTime = json.stringOf("items[i].end.dateTime");
         created = json.stringOf("items[i].created");
 
-        if (summary != 0){
-            std::cout << summary << "\n";
-        }
+        CalendarEvent event = CalendarEvent(id,created,summary);
+        
         if (startDateTime!=0){
-            std::cout << "Start date: " << startDateTime << "\n"; 
+            event.setTimeStart(startDateTime);
         }
         if (endDateTime != 0){
-            std::cout << "End date: " << endDateTime << "\n";
+            event.setTimeEnd(endDateTime);
         }
-        std::cout << "(" << created << ")\n";
         
+        std::cout << "------------------\n";
+        events.push_back(event);
+        event.print();
         i++;
     }
+
+    return events;
 }

@@ -8,11 +8,13 @@
 #include <ctime>
 #include <sstream>
 #include <iomanip>
+#include <vector>
 
 #include "../../include/chilkat/CkRest.h"
 #include "../../include/chilkat/CkOAuth2.h"
 #include "../../include/chilkat/CkStringBuilder.h"
 #include "../../include/chilkat/CkJsonObject.h"
+#include "CalendarEvent.h"
 
 class CalendarManager{
     CkRest rest;
@@ -26,7 +28,7 @@ class CalendarManager{
     bool refreshToken();
 
 public:
-    void getUpcommingEvents(int maxEvents);
+    std::vector<CalendarEvent> getUpcommingEvents(int maxEvents);
     CalendarManager(const std::string &config_path);
 };
 
