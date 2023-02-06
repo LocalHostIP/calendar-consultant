@@ -5,8 +5,8 @@ OBJ=obj
 SRC=src
 
 BIN=bin/main
-OBJs=$(OBJ)/CalendarEvent.o $(OBJ)/main.o $(OBJ)/CalendarManager.o
-SRCs=$(SRC)/CalendarManager.cpp $(SRC)/CalendarEvent.cpp $(SRC)/main.cpp
+OBJs=$(OBJ)/CalendarEvent.o $(OBJ)/main.o $(OBJ)/CalendarManager.o $(OBJ)/SerialCom.o
+SRCs=$(SRC)/CalendarManager.cpp $(SRC)/CalendarEvent.cpp $(SRC)/main.cpp $(SRC)/SerialCom.cpp
 
 all:bin/main
 
