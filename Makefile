@@ -15,10 +15,14 @@ release: clean
 release: $(BIN)
 
 $(BIN): $(OBJs)
-	$(CC) $(CFLAGS) $(OBJs) -o $@ -L lib -lchilkat
+	$(CC) $(CFLAGS) $(OBJs) -o $@ -Llib -lchilkat
 
 $(OBJ)/%.o: $(SRC)/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 clean:
 	$(RM) -r bin/* obj/* 
+
+cleanW:
+	del /q /s bin
+	del /q /s obj
