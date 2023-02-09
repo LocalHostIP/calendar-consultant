@@ -19,7 +19,7 @@ public:
     std::string getSummary();
     std::string getId();
     std::string getTimeStartDate();
-    std::string getTimeStartTime();
+    std::string getTimeStartHour();
     std::string getTimeEndDate();
     std::string getTimeEndTime();
 

@@ -74,3 +74,7 @@ void SerialCom::updateConfig(){
 void SerialCom::closeConnection(){
     close(serial_port);
 }
+
+void SerialCom::writeData(const std::string &s){
+    write(serial_port,s.c_str(),s.length());
+}

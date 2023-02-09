@@ -24,6 +24,7 @@ public:
     std::string readData();
     void setReadConfig(const int maxBytes,const int TimeOut);
     void closeConnection();
+    void writeData(const std::string &s);
 };
 
 #endif
