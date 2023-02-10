@@ -36,7 +36,7 @@ SerialCom::SerialCom(const std::string port){
 
     if(tcgetattr(serial_port, &tty) != 0) {
         printf("Error %i from tcgetattr: %s\n", errno, strerror(errno));
-        throw std::runtime_error("Error on open port");
+        throw std::runtime_error("Error on open port "+port);
     }
 
     setIniConfigPort();

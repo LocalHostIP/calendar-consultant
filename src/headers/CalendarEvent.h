@@ -11,6 +11,7 @@ class CalendarEvent{
     bool is_time_start = false;
     bool is_time_end = false;
     bool is_summary = false;
+    
 public:
     CalendarEvent(const char * id,const char * time_created,const char * summary);
     void setTimeStart(const char * timeStart);  

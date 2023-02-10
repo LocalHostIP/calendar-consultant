@@ -21,7 +21,7 @@ std::string CalendarEvent::getTimeStartDate(){
         return "(No Time)";
     }
     else{
-        return time_start.substr(2,9);
+        return time_start.substr(2,8);
     }
 }
 
@@ -30,7 +30,7 @@ std::string CalendarEvent::getTimeStartHour(){
         return "";
     }
     else{
-        return time_start.substr(10,6);
+        return time_start.substr(11,5);
     }
 }
 
