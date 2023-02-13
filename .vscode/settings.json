@@ -56,6 +56,12 @@
         "memory_resource": "cpp",
         "numeric": "cpp",
         "random": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "ratio": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp",
+        "codecvt": "cpp",
+        "cinttypes": "cpp"
     }
 }

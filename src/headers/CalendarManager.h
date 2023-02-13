@@ -30,6 +30,7 @@ class CalendarManager{
 public:
     std::vector<CalendarEvent> getUpcommingEvents(int maxEvents);
     CalendarManager(const std::string &config_path);
+    bool deleteEvent(CalendarEvent event);
 };
 
 #endif

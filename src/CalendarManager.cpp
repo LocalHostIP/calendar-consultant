@@ -150,3 +150,25 @@ std::vector<CalendarEvent> CalendarManager::getUpcommingEvents(int maxEvents){
 
     return events;
 }
+
+bool CalendarManager::deleteEvent(CalendarEvent event){
+    //Cleaning rest
+    rest.ClearAllQueryParams();
+
+    //Setting rest
+    std::cout << "Asking for Calendars.. \n";
+    CkStringBuilder sbJson;
+    std::string url = "/calendar/v3/calendars/"+user_calendar+"/events/"+event.getId();
+
+    //Perform query
+    bool success = rest.FullRequestNoBodySb("DELETE",url.c_str(),sbJson);
+
+    if (success!=true){
+        std::cout << rest.lastErrorText() << std::endl;
+        return false;
+    }
+
+    std::cout << "Deleting "<<event.getSummary()<<"\n";
+
+    return true;
+}

@@ -17,7 +17,7 @@ public:
     void setTimeStart(const char * timeStart);  
     void setTimeEnd(const char * timeEnd);
     
-    std::string getSummary();
+    std::string getSummary(); 
     std::string getId();
     std::string getTimeStartDate();
     std::string getTimeStartHour();
